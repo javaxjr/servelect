@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.csi</groupId>
+    <artifactId>servelect</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--默认打包形式是jar 设置war-->
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <!--groupid和artifactId被统称为“坐标”是为了保证项目唯一性而提出的，如果你要把你项目弄到maven本地仓库去，
+            你想要找到你的项目就必须根据这两个id去查找。-->
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+    <!--Lifcycle 生命周期-->
+    <!--tomacat7的插件，生成一个tomacat7-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <!--端口号 8080不用自己输入端口号-->
+                    <port>80</port>
+                    <!--配置上下文路径 一个Tomcat可以运行多个项目，防止相互干扰-->
+                    <path>/</path>
+                    <!-- 配置编码格式防止乱码-->
+                    <uriEncoding>UTF-8</uriEncoding>
+
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>
